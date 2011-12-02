@@ -1,0 +1,11 @@
+﻿<?xml version='1.0' encoding="utf-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets" version="1.1.1" id="UltraCompact">
+    <name>UltraCompact</name>
+    <author href="http://people.opera.com/egiraudy/">Etienne Giraudy</author>
+    <description xml:lang="en">Ultra Compact CSS mods for gmail, google reader, etc.</description>
+    <license href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache 2.0 License</license>
+	<icon src="icons/ultracompact16.jpg" />
+	<icon src="icons/ultracompact32.jpg" />
+	<icon src="icons/ultracompact64.jpg" />
+	<icon src="icons/ultracompact128.jpg" />
+</widget>

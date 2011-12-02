@@ -1,0 +1,28 @@
+UltraCompact changelog
+=======================
+
+-- 1.1.2
+G+ wide stream display
+
+-- 1.1.1
+G+ further stream optimizations (slightly wider display)
+
+-- 1.1.0
+Allow non https for gmail and greader
+First space optimizations for Google Plus - more compact stream
+
+-- 1.0.4
+Some more tweaks
+Fix for non .com domains
+Code cleanup
+
+-- 1.0.3
+Allow the extension to work on non .com domains (mail.google.ru for example).
+Re-increase the left hand side folders area in Google Reader: making it too short makes the long folder names not to be displayed.
+
+-- 1.0.2
+A few enhancements, mostly for Google Reader.
+
+-- 1.0.1
+First public version
+
