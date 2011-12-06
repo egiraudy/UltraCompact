@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name UltraCompact
-// @version 1.1.1
+// @version 1.1.2
 // @include https://mail.google.*/*
 // @include http://mail.google.*/*
 // @include https://www.google.*/reader/view*
