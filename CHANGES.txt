@@ -1,6 +1,9 @@
 UltraCompact changelog
 =======================
 
+-- 1.2.0
+Each supported app can now be activated/de-activated through the extension option page
+
 -- 1.1.2
 G+ wide stream display
 

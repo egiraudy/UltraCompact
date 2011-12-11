@@ -1,24 +1,53 @@
-// ==UserScript==
-// @name UltraCompact
-// @version 1.1.2
-// @include https://mail.google.*/*
-// @include http://mail.google.*/*
-// @include https://www.google.*/reader/view*
-// @include http://www.google.*/reader/view*
-// @include https://plus.google.*/*
-// ==/UserScript==
+/*
+ Copyright 2011 Etienne Giraudy
 
-window.addEventListener('load', function (e) {
-	console.log('================UltraCompact: ' + window.location.href);
-	if (!isGmail() && !isGReader() && !isGPlus()) {
-		return;
-	}
-	styleIt();
-	if (isGmail()) {
-		// seems necessary for some reasons...
-		setInterval('styleIt()', 1000);
-	}
-}, false);
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+*/
+
+if (typeof opera !== "undefined") {
+	opera.extension.onmessage = function(event) {
+		console.log("++++++++++++("+whichApp()+") message received: " + event.data);
+		if (!isSupported()) {
+			return;
+		}
+		if (event.data==="UltraCompact:ready") {
+			event.source.postMessage(whichApp());
+			return;
+		}
+		if (event.data.indexOf("UltraCompact:enabled:"+whichApp()+":true")===0) {
+			styleIt();
+			if (isGMail()) {
+				// seems necessary for some reasons...
+				setInterval('styleIt()', 1000);
+			}
+			return;
+		}
+	};
+}
+
+if (typeof chrome !== "undefined") {
+	console.log("++++++++++++("+whichApp()+")");
+	chrome.extension.sendRequest({method: "get"+whichApp()+"Enabled"}, function(response) {
+		console.log(response.enabled);
+		if (response.enabled == true) {
+			styleIt();
+			if (isGMail()) {
+				// seems necessary for some reasons...
+				setInterval('styleIt()', 1000);
+			}
+		}
+	});
+}
 
 function styleIt() {
 
@@ -31,7 +60,7 @@ function styleIt() {
 	
 	var css = '';
 	
-	if (isGmail()) {
+	if (isGMail()) {
 		css = gmailMods();
 	} else if (isGReader()) {
 		css = greaderMods();
@@ -116,7 +145,11 @@ function gplusMods() {
 	return css;
 }
 
-function isGmail() {
+function isSupported() {
+	return isGMail() || isGReader() || isGPlus();
+}
+
+function isGMail() {
 	if (window.location.hostname.indexOf('mail.google.') === 0) return true;
 	return false;
 }
@@ -132,3 +165,10 @@ function isGReader() {
 		) return true;
 	return false;
 }
+function whichApp() {
+	if (isGMail()) return "gmail";
+	if (isGPlus()) return "gplus";
+	if (isGReader()) return "greader";
+	return "unknown";
+}
+

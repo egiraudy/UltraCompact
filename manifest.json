@@ -1,8 +1,10 @@
 {
   "name": "UltraCompact",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "Ultra Compact CSS mods for gmail, google reader, etc.",
   "icons": { "128": "icons/ultracompact128.jpg",  "48": "icons/ultracompact48.jpg", "16": "icons/ultracompact16.jpg"},
+  "options_page": "options.html",
+  "background_page": "index.html",
   "content_scripts": [
     {
       "matches": ["*://*/mail/u/*", "*://*/reader/*","https://plus.google.com/*"],
