@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!--
+/*
+ Copyright 2011 Etienne Giraudy
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+*/
+-->
+<html>
+<head>
+	<title>UltraCompact options page</title>
+	<style type="text/css">
+		#wrapper {
+		  margin: 1em auto;
+		  width: 800px;
+		  background-color: lightgrey;
+		  padding: 0.5em;
+		  border-radius: 20px;
+		  box-shadow: 6px 6px 7px #89a, 2px 2px 2px #89a ;
+		}
+		
+		h1 {
+		  font-family: sans-serif;
+		  font-size: 1.3em;
+		}
+		
+		label {
+          display: block;
+          width: 100px;
+          float: left;
+          clear: left;
+          text-align: right;
+          margin-left: -1em;
+        }
+
+        select {
+          //margin-left: 1em;
+          width: 150px;
+          font-size: 0.8em;
+        }
+        
+        li {
+          list-style-type: none;
+        }
+	</style>
+	
+	<script type="text/javascript">
+		var idx = 3;
+		function saveOptions() {
+			var gmail = new Array();
+			gmail.push(document.getElementsByName('gmail_enabled')[0].checked);
+			localStorage.setItem('gmail', gmail.join(';'));
+
+			var greader = new Array();
+			greader.push(document.getElementsByName('greader_enabled')[0].checked);
+			localStorage.setItem('greader', greader.join(';'));
+
+			var gplus = new Array();
+			gplus.push(document.getElementsByName('gplus_enabled')[0].checked);
+			localStorage.setItem('gplus', gplus.join(';'));
+		}
+		
+		function loadOptions() {
+			var gmail = localStorage.getItem('gmail');
+			if (gmail) {
+				//gmail = gmail.split(";");
+				document.getElementsByName('gmail_enabled')[0].checked = (gmail==="true");
+			}
+			
+			var greader = localStorage.getItem('greader');
+			if (greader) {
+				//greader = gmail.split(";");
+				document.getElementsByName('greader_enabled')[0].checked = (greader==="true");
+			}
+			
+			var gplus = localStorage.getItem('gplus');
+			if (gplus) {
+				//gplus = gplus.split(";");
+				document.getElementsByName('gplus_enabled')[0].checked = (gplus==="true");
+			}
+			
+		}
+		window.addEventListener( 'DOMContentLoaded', loadOptions, false );
+	</script>
+
+</head>
+<body>
+	<div id="wrapper"> 
+	<h1>Options page for DynaFav</h1> 
+	<form>
+	
+		<table>
+			<tr>
+				<th>App</th><th>Enabled</th>
+			</tr>
+			<tr>
+				<td>GMail</td>
+				<td><input type="checkbox" name="gmail_enabled" value="enabled" checked="true" /></td>
+			</tr>
+			<tr>
+				<td>GReader</td>
+				<td><input type="checkbox" name="greader_enabled" value="enabled" checked="true" /></td>
+			</tr>
+			<tr>
+				<td>GPlus</td>
+				<td><input type="checkbox" name="gplus_enabled" value="enabled" checked="true" /></td>
+			</tr>
+		</table>
+		
+		<p><button onclick="saveOptions(); return false;">Save</button></p>
+		<p>Support page: <a href="https://plus.google.com/115186015066511844533/posts">UltraCompact+</a></p>
+	</form> 
+	</div>
+</body>
+</html>
