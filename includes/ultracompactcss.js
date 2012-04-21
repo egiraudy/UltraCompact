@@ -1,5 +1,5 @@
 /*
- Copyright 2011 Etienne Giraudy
+ Copyright 2012 Etienne Giraudy
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@ if (typeof opera !== "undefined") {
 		}
 		if (event.data.indexOf("UltraCompact:enabled:"+whichApp()+":true")===0) {
 			styleIt();
-			if (isGMail()) {
+			if (isGMail() || isGPlus()) {
 				// seems necessary for some reasons...
 				setInterval('styleIt()', 1000);
 			}
@@ -83,8 +83,8 @@ function styleIt() {
 }
 
 function gmailMods() {
-    var css = '';
-	css += '.xY { height: 1ex; }';
+   var css = '';
+   css += '.xY { height: 1ex; }';
 	css += '.Wg { padding-top: 0; padding-bottom: 0; }';
 	css += '.VP5otc-pzeoBf, .VP5otc-YU0EGb-pzeoBf, .iI, .VP5otc-U4m8q, .iE { margin-top: 0px; padding-bottom: 1px; }';
 	css += '.GcwpPb-Z8OBDd { margin-bottom: 1px; }';
@@ -103,7 +103,7 @@ function gmailMods() {
 }
 
 function greaderMods() {
-    var css = '';
+   var css = '';
 	css += '#scrollable-sections-top-shadow, #scrollable-sections-bottom-shadow { width: 194px; }';
 	css += '#nav { width: 194px; }';
 	css += '#chrome { margin-left: 195px; }';
@@ -126,7 +126,8 @@ function greaderMods() {
 }
 
 function gplusMods() {
-    var css = '';
+   var css = '';
+/* old G+
 	css += '.c-cb-C { padding-top: 1px; }';
 	css += '.c-cb-C { height:40px; }';
 	css += '.c-cb-V { height:40px; }';
@@ -142,6 +143,19 @@ function gplusMods() {
 	css += '.Mo {margin-right: -10px;}';
 	css += '.jn {margin-right: 10px;margin-left: 35px;}';
 	css += '.Fn {margin-left: -55px;}';
+*/	
+	css += ' .NeLhq { padding: 0px 5px;}';
+	css += ' .uohZhe { height: 49px; margin-bottom: 14px;}';
+	css += ' .NeLhq .GJLzkf  { height: 38px;}';
+	css += ' .NeLhq .GJLzkf { line-height: 40px;}';
+	css += ' .uohZhe { height: 39px;}';
+	css += ' .ZI35oe { padding: 5px;}';
+	css += ' .ncGWdc { width: 600px;}';
+	css += ' .iH { width: 525px;}';
+	css += ' .SG { margin-top: 8px; width: 593px;}';
+	css += ' .Te {margin: 0px 0px 0px 68px; width: 525px;}';
+	css += ' .Ns { padding: 5px 16px 0px;}';
+	css += ' .HC { height: 0px;}';
 	return css;
 }
 
