@@ -127,23 +127,6 @@ function greaderMods() {
 
 function gplusMods() {
    var css = '';
-/* old G+
-	css += '.c-cb-C { padding-top: 1px; }';
-	css += '.c-cb-C { height:40px; }';
-	css += '.c-cb-V { height:40px; }';
-	css += '.Sv { margin-top:5px; }';
-	css += '.mA { margin-top:5px; }';
-	css += '.iA { margin-top:0px;padding-top:5px; }';
-	css += '.gi { padding-top:3px;padding-bottom:3px; }';
-	css += '.dl, .Us { padding-bottom:3px; }';
-	css += '.Rx, .yx { padding-top:1px;padding-bottom:1px; }';
-	css += '.wx { padding-top:0px;padding-bottom:0px; }';
-	css += '.B-u-C { margin-top: 0px;margin-bottom: 0px; }';
-	css += '.Ex {background-color:#eeeeee;}';
-	css += '.Mo {margin-right: -10px;}';
-	css += '.jn {margin-right: 10px;margin-left: 35px;}';
-	css += '.Fn {margin-left: -55px;}';
-*/	
 	css += ' .NeLhq { padding: 0px 5px;}';
 	css += ' .uohZhe { height: 49px; margin-bottom: 14px;}';
 	css += ' .NeLhq .GJLzkf  { height: 38px;}';
@@ -156,6 +139,18 @@ function gplusMods() {
 	css += ' .Te {margin: 0px 0px 0px 68px; width: 525px;}';
 	css += ' .Ns { padding: 5px 16px 0px;}';
 	css += ' .HC { height: 0px;}';
+	css += '.e-Ia-If { padding: 3px;}';
+	css += '.dXR9hf, .mm2Xdd { padding-bottom: 5px;}';
+	css += '.Vl .JDeJO { padding: 3px 0px;}';
+	css += '.Jt.esw, .HPvmqf { margin-top: 2px;}';
+	css += '.cWD3F { height: 28px;}';
+	css += '.Wt { padding-bottom: 2px;}';
+	css += '.Yt { padding-bottom: 2px; padding-top: 2px;}';
+	css += '.evVEFd { padding-bottom: 5px;}';
+	css += '.yo, .xven9b, .f1oVUc { padding: 0px 0px 3px;}';
+	css += '.We { padding-bottom: 5px;}';
+	css += '.Ln { margin: 1px 0px;}';
+	css += '.rh { padding: 0px 0px 3px;}';
 	return css;
 }
 
