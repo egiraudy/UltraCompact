@@ -1,6 +1,9 @@
 UltraCompact changelog
 =======================
 
+-- 1.3.1
+More G+ optimizations
+
 -- 1.3.0
 "New" G+ initial support
 
