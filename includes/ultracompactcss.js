@@ -26,7 +26,7 @@ if (typeof opera !== "undefined") {
 		}
 		if (event.data.indexOf("UltraCompact:enabled:"+whichApp()+":true")===0) {
 			styleIt();
-			if (isGMail() || isGPlus()) {
+			if (isGMail()) {
 				// seems necessary for some reasons...
 				setInterval('styleIt()', 1000);
 			}
@@ -54,27 +54,24 @@ function styleIt() {
 	var docHead = document.getElementsByTagName("head")[0];
 
 	var lastStyleNode = docHead.getElementsByTagName('style');
-	if (lastStyleNode!==null && lastStyleNode.length>0 && lastStyleNode[lastStyleNode.length-1].id === 'EtienneCustomCss') {
+	if (lastStyleNode!==null && lastStyleNode.length>0 && lastStyleNode[lastStyleNode.length-1].id === 'UltraCompactCustomCss') {
 		return;
 	}
 	
 	var css = '';
 	
 	if (isGMail()) {
+	   //console.log(" ************ [UltraCompactCss.js] GMail styling...");
 		css = gmailMods();
 	} else if (isGReader()) {
+	   //console.log(" ************ [UltraCompactCss.js] Google Reader styling...");
 		css = greaderMods();
-	} else if (isGPlus()) {
-		css = gplusMods();
 	} else {
+	   //console.log(" ************ [UltraCompactCss.js] No styling, unknown app");
 		return;
 	}
 
-	var style = document.getElementById('UltraCompactCustomCss');
-	if (style !== null) {
-		docHead.removeChild(style);
-	}
-	style = document.createElement("style");
+	var style = document.createElement("style");
 	style.type = "text/css";
 	style.id = 'UltraCompactCustomCss';
 	var textNode = document.createTextNode(css);
@@ -125,45 +122,12 @@ function greaderMods() {
 	return css;
 }
 
-function gplusMods() {
-   var css = '';
-	css += ' .NeLhq { padding: 0px 5px;}';
-	css += ' .uohZhe { height: 49px; margin-bottom: 14px;}';
-	css += ' .NeLhq .GJLzkf  { height: 38px;}';
-	css += ' .NeLhq .GJLzkf { line-height: 40px;}';
-	css += ' .uohZhe { height: 39px;}';
-	css += ' .ZI35oe { padding: 5px;}';
-	css += ' .ncGWdc { width: 600px;}';
-	css += ' .iH { width: 525px;}';
-	css += ' .SG { margin-top: 8px; width: 593px;}';
-	css += ' .Te {margin: 0px 0px 0px 68px; width: 525px;}';
-	css += ' .Ns { padding: 5px 16px 0px;}';
-	css += ' .HC { height: 0px;}';
-	css += '.e-Ia-If { padding: 3px;}';
-	css += '.dXR9hf, .mm2Xdd { padding-bottom: 5px;}';
-	css += '.Vl .JDeJO { padding: 3px 0px;}';
-	css += '.Jt.esw, .HPvmqf { margin-top: 2px;}';
-	css += '.cWD3F { height: 28px;}';
-	css += '.Wt { padding-bottom: 2px;}';
-	css += '.Yt { padding-bottom: 2px; padding-top: 2px;}';
-	css += '.evVEFd { padding-bottom: 5px;}';
-	css += '.yo, .xven9b, .f1oVUc { padding: 0px 0px 3px;}';
-	css += '.We { padding-bottom: 5px;}';
-	css += '.Ln { margin: 1px 0px;}';
-	css += '.rh { padding: 0px 0px 3px;}';
-	return css;
-}
-
 function isSupported() {
-	return isGMail() || isGReader() || isGPlus();
+	return isGMail() || isGReader();
 }
 
 function isGMail() {
 	if (window.location.hostname.indexOf('mail.google.') === 0) return true;
-	return false;
-}
-function isGPlus() {
-	if (window.location.hostname.indexOf('plus.google.') === 0) return true;
 	return false;
 }
 function isGReader() {
@@ -176,7 +140,6 @@ function isGReader() {
 }
 function whichApp() {
 	if (isGMail()) return "gmail";
-	if (isGPlus()) return "gplus";
 	if (isGReader()) return "greader";
 	return "unknown";
 }

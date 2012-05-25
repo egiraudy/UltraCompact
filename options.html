@@ -64,31 +64,18 @@
 			var greader = new Array();
 			greader.push(document.getElementsByName('greader_enabled')[0].checked);
 			localStorage.setItem('greader', greader.join(';'));
-
-			var gplus = new Array();
-			gplus.push(document.getElementsByName('gplus_enabled')[0].checked);
-			localStorage.setItem('gplus', gplus.join(';'));
 		}
 		
 		function loadOptions() {
 			var gmail = localStorage.getItem('gmail');
 			if (gmail) {
-				//gmail = gmail.split(";");
 				document.getElementsByName('gmail_enabled')[0].checked = (gmail==="true");
 			}
 			
 			var greader = localStorage.getItem('greader');
 			if (greader) {
-				//greader = gmail.split(";");
 				document.getElementsByName('greader_enabled')[0].checked = (greader==="true");
 			}
-			
-			var gplus = localStorage.getItem('gplus');
-			if (gplus) {
-				//gplus = gplus.split(";");
-				document.getElementsByName('gplus_enabled')[0].checked = (gplus==="true");
-			}
-			
 		}
 		window.addEventListener( 'DOMContentLoaded', loadOptions, false );
 	</script>
@@ -110,10 +97,6 @@
 			<tr>
 				<td>GReader</td>
 				<td><input type="checkbox" name="greader_enabled" value="enabled" checked="true" /></td>
-			</tr>
-			<tr>
-				<td>GPlus</td>
-				<td><input type="checkbox" name="gplus_enabled" value="enabled" checked="true" /></td>
 			</tr>
 		</table>
 		

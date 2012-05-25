@@ -3,7 +3,7 @@ UltraCompact
 
 Chrome and Opera extension. 
 
-CSS mods for Gmail, Google Reader and Google Plus
+CSS mods for Gmail and Google Reader.
 
 For Gmail "Compact" density display mode, Google Reader and Google Plus
 The goal is to make those application with the new theme more space efficient.
@@ -13,6 +13,10 @@ Support page: https://plus.google.com/115186015066511844533
 
 Changes
 -------
+
+-- 1.4.0
+Removed G+ support: css classes names are (probably) auto-generated and I can't keep the pace
+Small optimization
 
 -- 1.3.1
 More G+ optimizations

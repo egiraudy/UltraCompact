@@ -16,7 +16,6 @@
 
 var gmail_enabled = false;
 var greader_enabled = false;
-var gplus_enabled = false;
 
 if (typeof opera !== "undefined") {
 	window.addEventListener("DOMContentLoaded", function() {
@@ -37,9 +36,6 @@ if (typeof opera !== "undefined") {
 			if (event.data==="greader") {
 				event.source.postMessage("UltraCompact:enabled:greader:"+greader_enabled);
 			}
-			if (event.data==="gplus") {
-				event.source.postMessage("UltraCompact:enabled:gplus:"+gplus_enabled);
-			}
 		};
 	}, false);
 }
@@ -48,13 +44,11 @@ if (typeof chrome !== "undefined") {
 	chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
 		console.log("######## message received: " + request.method);
 		loadOptions("xxx");
-		console.log("######## apps enabled: " + gmail_enabled + ":" + greader_enabled + ":" + gplus_enabled);
+		console.log("######## apps enabled: " + gmail_enabled + ":" + greader_enabled);
 		if (request.method == "getgmailEnabled") {
 			sendResponse({enabled: gmail_enabled});
 		} else if (request.method == "getgreaderEnabled") {
 			sendResponse({enabled: greader_enabled});
-		} else if (request.method == "getgplusEnabled") {
-			sendResponse({enabled: gplus_enabled});
 		} else {
 			sendResponse({}); // snub them.
 		}
@@ -72,11 +66,5 @@ function loadOptions(app) {
 	if (greader) {
 		//greader = gmail.split(";");
 		greader_enabled = (greader==="true");
-	}
-	
-	var gplus = localStorage.getItem('gplus');
-	if (gplus) {
-		//gplus = gplus.split(";");
-		gplus_enabled = (gplus==="true");
 	}
 }

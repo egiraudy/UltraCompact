@@ -1,6 +1,10 @@
 UltraCompact changelog
 =======================
 
+-- 1.4.0
+Removed G+ support: css classes names are (probably) auto-generated and I can't keep the pace
+Small optimization
+
 -- 1.3.1
 More G+ optimizations
 
