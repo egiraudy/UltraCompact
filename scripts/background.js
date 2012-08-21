@@ -18,53 +18,53 @@ var gmail_enabled = false;
 var greader_enabled = false;
 
 if (typeof opera !== "undefined") {
-	window.addEventListener("DOMContentLoaded", function() {
-		console.log("######## background process loading");
-		
-		opera.extension.onconnect = function(event) {
-			//console.log("######## on connect [");
-			loadOptions("xxx");
-			event.source.postMessage("UltraCompact:ready"); 
-			//console.log("######## on connect ]");
-		};
-		
-		opera.extension.onmessage = function(event) {
-		console.log("######## message received: " + event.data);
-			if (event.data==="gmail") {
-				event.source.postMessage("UltraCompact:enabled:gmail:"+gmail_enabled);
-			}
-			if (event.data==="greader") {
-				event.source.postMessage("UltraCompact:enabled:greader:"+greader_enabled);
-			}
-		};
-	}, false);
+    window.addEventListener("DOMContentLoaded", function() {
+        console.log("######## background process loading");
+
+        opera.extension.onconnect = function(event) {
+            //console.log("######## on connect [");
+            loadOptions("xxx");
+            event.source.postMessage("UltraCompact:ready");
+            //console.log("######## on connect ]");
+        };
+
+        opera.extension.onmessage = function(event) {
+        console.log("######## message received: " + event.data);
+            if (event.data==="gmail") {
+                event.source.postMessage("UltraCompact:enabled:gmail:"+gmail_enabled);
+            }
+            if (event.data==="greader") {
+                event.source.postMessage("UltraCompact:enabled:greader:"+greader_enabled);
+            }
+        };
+    }, false);
 }
 
 if (typeof chrome !== "undefined") {
-	chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
-		console.log("######## message received: " + request.method);
-		loadOptions("xxx");
-		console.log("######## apps enabled: " + gmail_enabled + ":" + greader_enabled);
-		if (request.method == "getgmailEnabled") {
-			sendResponse({enabled: gmail_enabled});
-		} else if (request.method == "getgreaderEnabled") {
-			sendResponse({enabled: greader_enabled});
-		} else {
-			sendResponse({}); // snub them.
-		}
-	});
+    chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
+        console.log("######## message received: " + request.method);
+        loadOptions("xxx");
+        console.log("######## apps enabled: " + gmail_enabled + ":" + greader_enabled);
+        if (request.method == "getgmailEnabled") {
+            sendResponse({enabled: gmail_enabled});
+        } else if (request.method == "getgreaderEnabled") {
+            sendResponse({enabled: greader_enabled});
+        } else {
+            sendResponse({}); // snub them.
+        }
+    });
 }
 
 function loadOptions(app) {
-	var gmail = localStorage.getItem('gmail');
-	if (gmail) {
-		//gmail = gmail.split(";");
-		gmail_enabled = (gmail==="true");
-	}
-	
-	var greader = localStorage.getItem('greader');
-	if (greader) {
-		//greader = gmail.split(";");
-		greader_enabled = (greader==="true");
-	}
+    var gmail = localStorage.getItem('gmail');
+    if (gmail) {
+        //gmail = gmail.split(";");
+        gmail_enabled = (gmail==="true");
+    }
+
+    var greader = localStorage.getItem('greader');
+    if (greader) {
+        //greader = gmail.split(";");
+        greader_enabled = (greader==="true");
+    }
 }

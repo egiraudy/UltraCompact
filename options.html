@@ -18,23 +18,23 @@
 -->
 <html>
 <head>
-	<title>UltraCompact options page</title>
-	<style type="text/css">
-		#wrapper {
-		  margin: 1em auto;
-		  width: 800px;
-		  background-color: lightgrey;
-		  padding: 0.5em;
-		  border-radius: 20px;
-		  box-shadow: 6px 6px 7px #89a, 2px 2px 2px #89a ;
-		}
-		
-		h1 {
-		  font-family: sans-serif;
-		  font-size: 1.3em;
-		}
-		
-		label {
+    <title>UltraCompact options page</title>
+    <style type="text/css">
+        #wrapper {
+          margin: 1em auto;
+          width: 800px;
+          background-color: lightgrey;
+          padding: 0.5em;
+          border-radius: 20px;
+          box-shadow: 6px 6px 7px #89a, 2px 2px 2px #89a ;
+        }
+
+        h1 {
+          font-family: sans-serif;
+          font-size: 1.3em;
+        }
+
+        label {
           display: block;
           width: 100px;
           float: left;
@@ -48,61 +48,37 @@
           width: 150px;
           font-size: 0.8em;
         }
-        
+
         li {
           list-style-type: none;
         }
-	</style>
-	
-	<script type="text/javascript">
-		var idx = 3;
-		function saveOptions() {
-			var gmail = new Array();
-			gmail.push(document.getElementsByName('gmail_enabled')[0].checked);
-			localStorage.setItem('gmail', gmail.join(';'));
+    </style>
 
-			var greader = new Array();
-			greader.push(document.getElementsByName('greader_enabled')[0].checked);
-			localStorage.setItem('greader', greader.join(';'));
-		}
-		
-		function loadOptions() {
-			var gmail = localStorage.getItem('gmail');
-			if (gmail) {
-				document.getElementsByName('gmail_enabled')[0].checked = (gmail==="true");
-			}
-			
-			var greader = localStorage.getItem('greader');
-			if (greader) {
-				document.getElementsByName('greader_enabled')[0].checked = (greader==="true");
-			}
-		}
-		window.addEventListener( 'DOMContentLoaded', loadOptions, false );
-	</script>
+    <script src="scripts/options.js"></script>
 
 </head>
 <body>
-	<div id="wrapper"> 
-	<h1>Options page for UltraCompact</h1> 
-	<form>
-	
-		<table>
-			<tr>
-				<th>App</th><th>Enabled</th>
-			</tr>
-			<tr>
-				<td>GMail</td>
-				<td><input type="checkbox" name="gmail_enabled" value="enabled" checked="true" /></td>
-			</tr>
-			<tr>
-				<td>GReader</td>
-				<td><input type="checkbox" name="greader_enabled" value="enabled" checked="true" /></td>
-			</tr>
-		</table>
-		
-		<p><button onclick="saveOptions(); return false;">Save</button></p>
-		<p>Support page: <a href="https://plus.google.com/115186015066511844533/posts">UltraCompact+</a></p>
-	</form> 
-	</div>
+    <div id="wrapper">
+    <h1>Options page for UltraCompact</h1>
+    <form>
+
+        <table>
+            <tr>
+                <th>App</th><th>Enabled</th>
+            </tr>
+            <tr>
+                <td>GMail</td>
+                <td><input type="checkbox" name="gmail_enabled" value="enabled" checked="false" /></td>
+            </tr>
+            <tr>
+                <td>GReader</td>
+                <td><input type="checkbox" name="greader_enabled" value="enabled" checked="false" /></td>
+            </tr>
+        </table>
+
+        <p><button id="saveOptions">Save</button></p>
+        <p>Support page: <a href="https://plus.google.com/115186015066511844533/posts">UltraCompact</a></p>
+    </form>
+    </div>
 </body>
 </html>
