@@ -13,6 +13,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
+var gtalk_hidden = false;
 
 if (typeof opera !== "undefined") {
 	opera.extension.onmessage = function(event) {
@@ -25,6 +26,9 @@ if (typeof opera !== "undefined") {
 			return;
 		}
 		if (event.data.indexOf("UltraCompact:enabled:"+whichApp()+":true")===0) {
+			if (isGMail() && event.data.indexOf("gtalk_hidden:true")>1) {
+				gtalk_hidden = true;
+			}
 			styleIt();
 			if (isGMail()) {
 				// seems necessary for some reasons...
@@ -40,6 +44,9 @@ if (typeof chrome !== "undefined") {
 	chrome.extension.sendRequest({method: "get"+whichApp()+"Enabled"}, function(response) {
 		console.log(response.enabled);
 		if (response.enabled == true) {
+			if (isGmail() && response.gtalkhidden==true) {
+				gtalk_hidden = true;
+			}
 			styleIt();
 			if (isGMail()) {
 				// seems necessary for some reasons...
@@ -88,12 +95,15 @@ function gmailMods() {
 	css += '.Wg { background-color: #C7EEFF; }';
 	css += '.LIMjF-d2fWKd { margin-left: 6px; margin-top: -22px; }';
 	css += '.qd { padding-bottom: 0.2ex; padding-top: 0.2ex; }';
-	css += '.T0 { display:none; }';
-	css += '.ae0 { display:none; }';
 	css += 'element.style { height: 265px; }';
-	css += '.akc, .aeO {display:none;}';
 	css += '.c-r-P-V-wk-Eb { width: 674px;}';
 	css += '.c-C  {  width:1100px;}';
+
+	if (gtalk_hidden) {
+		css += '.akc, .aeO {display:none;}';
+	css += '.T0 { display:none; }';
+	}
+	
 	// TODO:
 	// labels expanded by default
 	return css;

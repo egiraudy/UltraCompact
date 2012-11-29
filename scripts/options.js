@@ -3,6 +3,7 @@ var idx = 3;
 function saveOptions() {
     var gmail = new Array();
     gmail.push(document.getElementsByName('gmail_enabled')[0].checked);
+    gmail.push(document.getElementsByName('gmail_gtalk_hidden')[0].checked);
     localStorage.setItem('gmail', gmail.join(';'));
 
     var greader = new Array();
@@ -11,9 +12,15 @@ function saveOptions() {
 }
 
 function loadOptions() {
-    var gmail = localStorage.getItem('gmail');
-    if (gmail) {
-        document.getElementsByName('gmail_enabled')[0].checked = (gmail==="true");
+    var gmail_ = localStorage.getItem('gmail')
+    if (gmail_) {
+		var gmail = gmail_.split(';');
+		if (gmail[0]) {
+			document.getElementsByName('gmail_enabled')[0].checked = (gmail[0]==="true");
+		}
+		if (gmail[1]) {
+			document.getElementsByName('gmail_gtalk_hidden')[0].checked = (gmail[1]==="true");
+		}
     }
 
     var greader = localStorage.getItem('greader');

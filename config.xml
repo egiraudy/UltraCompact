@@ -1,5 +1,5 @@
 ﻿<?xml version='1.0' encoding="utf-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" version="1.4.0" id="UltraCompact">
+<widget xmlns="http://www.w3.org/ns/widgets" version="1.4.4" id="UltraCompact">
     <name>UltraCompact</name>
     <author href="http://people.opera.com/egiraudy/">Etienne Giraudy</author>
     <description xml:lang="en">Ultra Compact CSS mods for gmail and google reader</description>

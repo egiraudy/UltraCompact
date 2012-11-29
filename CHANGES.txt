@@ -1,6 +1,12 @@
 UltraCompact changelog
 =======================
 
+-- 1.4.4
+Added an option to control whether Gtalk should be hidden or not in gmail
+
+-- 1.4.3
+Added support for most recent chrome versions
+
 -- 1.4.0
 Removed G+ support: css classes names are (probably) auto-generated and I can't keep the pace
 Small optimization

@@ -15,6 +15,7 @@
 */
 
 var gmail_enabled = false;
+var gtalk_hidden = false;
 var greader_enabled = false;
 
 if (typeof opera !== "undefined") {
@@ -31,7 +32,7 @@ if (typeof opera !== "undefined") {
         opera.extension.onmessage = function(event) {
         console.log("######## message received: " + event.data);
             if (event.data==="gmail") {
-                event.source.postMessage("UltraCompact:enabled:gmail:"+gmail_enabled);
+                event.source.postMessage("UltraCompact:enabled:gmail:"+gmail_enabled+":gtalk_hidden:"+gtalk_hidden);
             }
             if (event.data==="greader") {
                 event.source.postMessage("UltraCompact:enabled:greader:"+greader_enabled);
@@ -46,7 +47,7 @@ if (typeof chrome !== "undefined") {
         loadOptions("xxx");
         console.log("######## apps enabled: " + gmail_enabled + ":" + greader_enabled);
         if (request.method == "getgmailEnabled") {
-            sendResponse({enabled: gmail_enabled});
+            sendResponse({enabled: gmail_enabled, gtalkhidden: gtalk_hidden});
         } else if (request.method == "getgreaderEnabled") {
             sendResponse({enabled: greader_enabled});
         } else {
@@ -58,8 +59,9 @@ if (typeof chrome !== "undefined") {
 function loadOptions(app) {
     var gmail = localStorage.getItem('gmail');
     if (gmail) {
-        //gmail = gmail.split(";");
-        gmail_enabled = (gmail==="true");
+        gmail = gmail.split(";");
+		if (gmail[0]) gmail_enabled = (gmail[0]==="true");
+		if (gmail[1]) gtalk_hidden = (gmail[1]==="true");
     }
 
     var greader = localStorage.getItem('greader');
