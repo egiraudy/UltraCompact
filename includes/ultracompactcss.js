@@ -44,11 +44,11 @@ if (typeof chrome !== "undefined") {
 	chrome.extension.sendRequest({method: "get"+whichApp()+"Enabled"}, function(response) {
 		console.log(response.enabled);
 		if (response.enabled == true) {
-			if (isGmail() && response.gtalkhidden==true) {
+			if (window.location.hostname.indexOf('mail.google.') === 0 && response.gtalkhidden==true) {
 				gtalk_hidden = true;
 			}
 			styleIt();
-			if (isGMail()) {
+			if (window.location.hostname.indexOf('mail.google.') === 0) {
 				// seems necessary for some reasons...
 				setInterval('styleIt()', 1000);
 			}
