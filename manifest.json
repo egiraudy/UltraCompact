@@ -1,6 +1,6 @@
 {
   "name": "UltraCompact",
-  "version": "1.4.5",
+  "version": "1.4.6",
   "manifest_version": 2,
   "description": "Ultra Compact CSS mods for gmail and google reader",
   "icons": { "128": "icons/ultracompact128.jpg",  "48": "icons/ultracompact48.jpg", "16": "icons/ultracompact16.jpg"},

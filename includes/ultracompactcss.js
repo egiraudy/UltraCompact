@@ -99,9 +99,14 @@ function gmailMods() {
 	css += '.c-r-P-V-wk-Eb { width: 674px;}';
 	css += '.c-C  {  width:1100px;}';
 
+	// make recipients italic
+	css += '.yP, .zF {font-style: italic;}';
+	// important icon adjustment
+	css += '.apd {padding: 0px 2px 0 0;}';
+	
 	if (gtalk_hidden) {
 		css += '.akc, .aeO {display:none;}';
-	css += '.T0 { display:none; }';
+		css += '.T0 { display:none; }';
 	}
 	
 	// TODO:
